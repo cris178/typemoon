@@ -1,0 +1,20 @@
+{
+	"api": {
+		"typemoonapi": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "The API for the TypeMoon web application.",
+							"apiKeyExpirationDays": "365"
+						}
+					}
+				}
+			}
+		}
+	}
+}
