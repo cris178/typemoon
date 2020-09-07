@@ -1,38 +1,85 @@
-.App {
+html{
+  margin: 0px;
+  padding: 0px;
+}
+
+
+body{
+  background-color: black;
+}
+
+nav{
+  background-color: #18181b;
+  color: #ececee;
+  height: 5vh;
+}
+
+.logo{
+  position: absolute;
+  top: 2vh;
+  width: 100%;
   text-align: center;
+  font-weight: 600;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.submissionArea{
+  width:20vw;
+  height: 10rem;
+  border-top-style: solid;
+  border-top-color: black;
+  background-color: #18181b;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.border-left{
+  padding-left: 1rem!important;
+  border-left-color: #2D2B33;
+  border-left-style: solid;
+  border-left-width: .1px;
+}
+
+.border-right{
+  padding-right: 1rem!important;
+  border-right-color: #2D2B33;
+  border-right-style: solid;
+  border-right-width: .1px;
+}
+
+.submitPost{
+  margin-top: 5rem;
+}
+
+input{
+  height: 3rem;
+  width: 10vw;
+  overflow-x: hidden;
+  border:none;
+}
+
+input:focus{
+  border:none;
+  
+}
+
+textarea:focus,
+input:focus,
+.form-control:focus,
+*:focus {
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  
+}
+
+hr{
+  border-color: #2D2B33;
 }

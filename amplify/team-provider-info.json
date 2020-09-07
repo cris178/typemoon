@@ -10,6 +10,14 @@
             "StackName": "amplify-typemoon-dev-212101",
             "StackId": "arn:aws:cloudformation:us-west-2:110083123427:stack/amplify-typemoon-dev-212101/b305fd50-f0c1-11ea-97ff-0239b11280c5",
             "AmplifyAppId": "d2hcaelzyz19k8"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2hcaelzyz19k8",
+                    "type": "cicd"
+                }
+            }
         }
     }
 }
