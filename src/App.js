@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Submit from './components/submit/submit'
 
 function App() {
   return (
@@ -9,13 +10,9 @@ function App() {
         <div className="logo">TypeMoon</div>
      </nav>
      <div className="container">
-        <div className="submissionArea border-left border-right">
-          <div className="submitPost">
-            <input type="text" className="post" placeholder="What's happening"/>
-            <hr></hr>
+        <div className="timeline">
+              <Submit />
           </div>
-        </div>
-       
      </div>
      
 
