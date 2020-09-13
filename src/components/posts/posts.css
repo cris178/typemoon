@@ -1,0 +1,27 @@
+
+.Posts:first-child{
+    border-top-color: #2D2B33;
+    border-top-style: solid;
+    border-top-width: 1rem;
+    margin-top: 1rem;
+}
+
+
+.Posts{
+    max-height: 8rem;
+    padding: 1rem;
+    border-top-color: #2D2B33;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+
+.PostText{
+    color:white;
+}
+
+.PostsUser{
+    color:white;
+    display: block;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}

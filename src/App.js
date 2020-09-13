@@ -1,6 +1,7 @@
 import React,{useEffect,useReducer} from 'react';
 import './App.css';
 import Submit from './components/submit/submit';
+import Posts from './components/Posts/Posts'
 
 import uuid from 'uuid/v4'
 
@@ -28,7 +29,7 @@ const CLIENT_ID = uuid();
 
 
 const initialState = {
-  id:"0e42fc20-09e0-4e5b-8bfa-16a88d177bdf",
+  id:"61075ae6-ef6b-48fd-a429-52ae8e7eb488",
   name:"",
   title:"",
   createdAt:"",
@@ -72,18 +73,24 @@ function App() {
         console.log("No valid account ID was provided")
         return;
       }
-      const postData = await API.graphql(graphqlOperation(ListPosts,{blogID:"0e42fc20-09e0-4e5b-8bfa-16a88d177bdf"}));
-      console.log('getBlog: ' + Object.keys(postData.data.listPost));
-      console.log('getBlog: ' + postData.data.listPost);
-      dispatch({type:'SET_POSTS', posts: postData.data.listPost.posts});
+      const postData = await API.graphql(graphqlOperation(ListPosts));
+      console.log('getBlog: ' + Object.keys(postData.data.listPosts.items[0]));
+      console.log('getBlog: ' + postData.data.listPosts.items[0].title);
+      for(let names of postData.data.listPosts.items){
+        if(names.blogID === id){
+          console.log("Iterating" + names.title);
+        }
+      }
+      dispatch({type:'SET_POSTS', posts: postData.data.listPosts.items});
       console.log("Current State is: " + state.posts);
+      console.log(Object.keys(state.posts));
     }catch(err){
       console.log("Error fetching posts..." + err);
     }
 
   }
 
-
+  console.log(state.posts)
   return (
     <div className="App">
      <nav>
@@ -92,7 +99,11 @@ function App() {
      <div className="container">
         <div className="timeline">
               <Submit />
-                         
+              <div className="timelinePosts">
+                <Posts />
+                <Posts />
+                <Posts />  
+              </div>      
           </div>
      </div>
      

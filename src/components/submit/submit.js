@@ -31,7 +31,7 @@ class Submit extends React.Component{
                 <div className="submitPost">
                 <input onChange={this.handleTermChange} type="text" className="post" placeholder="What's happening?" /> 
                 <button onClick={this.handleSubmission} className="submitButton">Submit</button>
-                <hr></hr>
+                {/*<hr></hr>*/}
                 </div>
             </div>
         );

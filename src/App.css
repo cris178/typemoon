@@ -42,7 +42,7 @@ nav{
   display: flex;
   flex-direction: column;
 
-  width:25vw;
+  width:30vw;
   border-top-style: solid;
   border-top-color: black;
   background-color: #18181b;
@@ -56,6 +56,10 @@ nav{
   border-right-color: #2D2B33;
   border-right-style: solid;
   border-right-width: .1px;
+}
+
+.timelinePosts{
+  order:2;
 }
 
 
