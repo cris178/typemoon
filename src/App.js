@@ -76,12 +76,15 @@ function App() {
       const postData = await API.graphql(graphqlOperation(ListPosts));
       console.log('getBlog: ' + Object.keys(postData.data.listPosts.items[0]));
       console.log('getBlog: ' + postData.data.listPosts.items[0].title);
+      const actualPost = [];
       for(let names of postData.data.listPosts.items){
         if(names.blogID === id){
           console.log("Iterating" + names.title);
+          actualPost.push(names.title);
         }
       }
-      dispatch({type:'SET_POSTS', posts: postData.data.listPosts.items});
+      dispatch({type:'SET_POSTS', posts: actualPost});
+      //dispatch({type:'SET_POSTS', posts: postData.data.listPosts.items});
       console.log("Current State is: " + state.posts);
       console.log(Object.keys(state.posts));
     }catch(err){
@@ -100,9 +103,11 @@ function App() {
         <div className="timeline">
               <Submit />
               <div className="timelinePosts">
-                <Posts />
-                <Posts />
-                <Posts />  
+              {state.posts.map((post,index)=>{
+                return(<Posts key={index} postText={post}/>);
+                //return(<Posts key={index} postText={post.title}/>);
+              })}
+                
               </div>      
           </div>
      </div>

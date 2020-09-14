@@ -4,6 +4,9 @@ import './Posts.css'
 class Posts extends React.Component{
     constructor(props){
         super(props);
+        this.state ={
+            
+        }
 
     }
     render(){
@@ -11,7 +14,7 @@ class Posts extends React.Component{
             <div className="Posts">
                 <div className="PostsUser">Cristian</div>
                 <div className="PostText">
-                    Hello World!
+                    {this.props.postText}
                 </div>
             </div>
         );
