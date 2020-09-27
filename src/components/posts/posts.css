@@ -25,3 +25,8 @@
     font-weight: bold;
     padding-bottom: 0.5rem;
 }
+
+.Posts > time{
+    color:white;
+    font-size: 0.7em;
+}

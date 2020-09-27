@@ -12,10 +12,12 @@ class Posts extends React.Component{
     render(){
         return(
             <div className="Posts">
-                <div className="PostsUser">Cristian</div>
+                <div className="PostsUser">{this.props.userName}</div>
                 <div className="PostText">
-                    {this.props.postText}
+                    {this.props.title}
+                    {this.props.body}
                 </div>
+                <time>{" "} {new Date(this.props.date).toDateString()}</time>
             </div>
         );
     }

@@ -1,54 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBlog = /* GraphQL */ `
-  mutation CreateBlog(
-    $input: CreateBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    createBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBlog = /* GraphQL */ `
-  mutation UpdateBlog(
-    $input: UpdateBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    updateBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBlog = /* GraphQL */ `
-  mutation DeleteBlog(
-    $input: DeleteBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    deleteBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const createPost = /* GraphQL */ `
   mutation CreatePost(
     $input: CreatePostInput!
@@ -56,18 +8,33 @@ export const createPost = /* GraphQL */ `
   ) {
     createPost(input: $input, condition: $condition) {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -79,18 +46,33 @@ export const updatePost = /* GraphQL */ `
   ) {
     updatePost(input: $input, condition: $condition) {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -102,18 +84,33 @@ export const deletePost = /* GraphQL */ `
   ) {
     deletePost(input: $input, condition: $condition) {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -125,12 +122,21 @@ export const createComment = /* GraphQL */ `
   ) {
     createComment(input: $input, condition: $condition) {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
@@ -146,12 +152,21 @@ export const updateComment = /* GraphQL */ `
   ) {
     updateComment(input: $input, condition: $condition) {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
@@ -167,15 +182,114 @@ export const deleteComment = /* GraphQL */ `
   ) {
     deleteComment(input: $input, condition: $condition) {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createLike = /* GraphQL */ `
+  mutation CreateLike(
+    $input: CreateLikeInput!
+    $condition: ModelLikeConditionInput
+  ) {
+    createLike(input: $input, condition: $condition) {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateLike = /* GraphQL */ `
+  mutation UpdateLike(
+    $input: UpdateLikeInput!
+    $condition: ModelLikeConditionInput
+  ) {
+    updateLike(input: $input, condition: $condition) {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteLike = /* GraphQL */ `
+  mutation DeleteLike(
+    $input: DeleteLikeInput!
+    $condition: ModelLikeConditionInput
+  ) {
+    deleteLike(input: $input, condition: $condition) {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
       createdAt
       updatedAt
     }

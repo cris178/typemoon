@@ -1,61 +1,37 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlog = /* GraphQL */ `
-  subscription OnCreateBlog {
-    onCreateBlog {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBlog = /* GraphQL */ `
-  subscription OnUpdateBlog {
-    onUpdateBlog {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBlog = /* GraphQL */ `
-  subscription OnDeleteBlog {
-    onDeleteBlog {
-      id
-      name
-      posts {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const onCreatePost = /* GraphQL */ `
   subscription OnCreatePost {
     onCreatePost {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -64,18 +40,33 @@ export const onUpdatePost = /* GraphQL */ `
   subscription OnUpdatePost {
     onUpdatePost {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -84,18 +75,33 @@ export const onDeletePost = /* GraphQL */ `
   subscription OnDeletePost {
     onDeletePost {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      postOwnerId
+      postOwnerUsername
+      postTitle
+      postBody
+      createdAt
       comments {
+        items {
+          id
+          commentOwnerId
+          commentOwnerUsername
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
-      createdAt
+      likes {
+        items {
+          id
+          numberLikes
+          likeOwnerId
+          likeOwnerUsername
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       updatedAt
     }
   }
@@ -104,12 +110,21 @@ export const onCreateComment = /* GraphQL */ `
   subscription OnCreateComment {
     onCreateComment {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
@@ -122,12 +137,21 @@ export const onUpdateComment = /* GraphQL */ `
   subscription OnUpdateComment {
     onUpdateComment {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
@@ -140,15 +164,105 @@ export const onDeleteComment = /* GraphQL */ `
   subscription OnDeleteComment {
     onDeleteComment {
       id
-      postID
+      commentOwnerId
+      commentOwnerUsername
       post {
         id
-        title
-        blogID
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
         createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         updatedAt
       }
       content
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLike = /* GraphQL */ `
+  subscription OnCreateLike {
+    onCreateLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLike = /* GraphQL */ `
+  subscription OnUpdateLike {
+    onUpdateLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLike = /* GraphQL */ `
+  subscription OnDeleteLike {
+    onDeleteLike {
+      id
+      numberLikes
+      likeOwnerId
+      likeOwnerUsername
+      post {
+        id
+        postOwnerId
+        postOwnerUsername
+        postTitle
+        postBody
+        createdAt
+        comments {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        updatedAt
+      }
       createdAt
       updatedAt
     }
