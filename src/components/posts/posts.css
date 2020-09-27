@@ -19,14 +19,43 @@
     color:white;
 }
 
-.PostsUser{
-    color:white;
-    display: block;
-    font-weight: bold;
+
+.metaData{
+    color: white;
     padding-bottom: 0.5rem;
+    width: 100%;
+    display: inline-block;
 }
 
-.Posts > time{
-    color:white;
-    font-size: 0.7em;
+.PostsUser{
+    font-weight: bold;
+    display: inline;
+    
 }
+.dropdownPost{
+    font-size: larger;
+    font-weight: bold;
+    display: inline;
+    float: right;
+    
+}
+
+.metaData > time{
+    font-size: 0.7em;
+    display: inline;
+    float: right;
+}
+
+.postActions{
+    display: flex;
+    position: relative;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.7em;
+    bottom: -15px;
+    color: white;
+}
+
+
+
