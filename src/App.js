@@ -1,17 +1,17 @@
-import React,{useEffect,useReducer, useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import './App.css';
 import Submit from './components/submit/submit';
-import Posts from './components/Posts/Posts'
+import Posts from './components/posts/posts';
 
 
 
 //import two apis API for communicating with appsync API.graohql
 //graphQL operation lets us wrap queries below it and wrap it in a function
-import Amplify, { API, graphqlOperation } from 'aws-amplify'
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
 
 
 //Import mutations and queriries 
-import {listPosts} from './graphql/queries'
+import {listPosts} from './graphql/queries';
 
 
 
