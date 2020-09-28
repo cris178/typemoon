@@ -32,29 +32,32 @@
     display: inline;
     
 }
-.dropdownPost{
-    font-size: larger;
-    font-weight: bold;
-    display: inline;
-    float: right;
-    
-}
 
 .metaData > time{
     font-size: 0.7em;
-    display: inline;
     float: right;
 }
 
 .postActions{
     display: flex;
-    position: relative;
     padding-bottom: 0.5rem;
+    position: relative;
     width: 100%;
     justify-content: space-between;
     font-size: 0.7em;
     bottom: -15px;
     color: white;
+}
+
+
+.dropdownIcon{
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 25px;
+}
+
+.dropdownIcon:hover{
+    background-color: #2b2b2b;
 }
 
 

@@ -1,10 +1,43 @@
-import React from 'react';
-import './posts.css'
+import React, {useEffect,useState} from 'react';
+import './posts.css';
+import DropDown from '../dropdown/dropdown';
+
+
 
 class Posts extends React.Component{
+     constructor(props){
+         super(props);
+         this.state = {
+             clicked: false
+         }
+         this.setClick = this.setClick.bind(this);
+     }
+
+     setClick(){
+         if(this.state.clicked === false){
+             this.setState({
+                 clicked: true
+             });
+         }else{
+             this.setState({
+                 clicked:false
+             });
+         }
+     }
     
     render(){
+        console.log("clicked: "+ this.state.clicked);
         console.log("Data: " + this.props.date);
+        let style;
+        if(this.state.clicked === true){
+          style = {
+              visibility: 'visible'
+          };
+        }else{
+          style ={
+              visibility: 'hidden'
+          }
+        }
         return(
             <div className="Posts">
                 <div className="metaData">
@@ -20,7 +53,8 @@ class Posts extends React.Component{
                     <div className="reply">Reply</div>
                     <div className="comments">See Comments</div>
                     <div className="likes">Likes</div>
-                    <div className="dropdownPost">"^"</div>
+                    <div onClick={this.setClick}className="dropdownIcon">"^"</div>
+                    <DropDown style={style}  clicked={this.state.clicked}></DropDown>
                 </div>
                 
             </div>

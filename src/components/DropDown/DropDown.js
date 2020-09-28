@@ -1,27 +1,30 @@
 import React from 'react';
+import "./dropdown.css";
 
-class DropDown extends React.Component(){
-    constructor(){
+class DropDown extends React.Component{
+    constructor(props){
         super(props);
         this.state ={
             listOpen: false
         }
     }
 
-    handleClickOutside(){
-        this.setState({
-          listOpen: false
-        })
-      }
-      toggleList(){
-        this.setState(prevState => ({
-          listOpen: !prevState.listOpen
-        }))
-      }
+    componentDidMount(){
+      this.setState({
+        listOpen: this.props.clicked
+      });
+    }
     render(){
+      console.log("prop: "+ this.props.style.visibility)
+        
         return(
-            <div className="DropDown">
-              
+            <div className="dropdown" style={this.props.style}>
+              <ul>
+                <li><a href="#">Delete</a></li>
+                <li><a href="#">Edit</a></li>
+                <li><a href="#">Share</a></li>
+                <li><a href="#">Iconography</a></li>
+              </ul>
             </div>
         );
     }
