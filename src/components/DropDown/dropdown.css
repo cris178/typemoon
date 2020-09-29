@@ -5,20 +5,62 @@
     display: block;
     min-width: 250px;
     font-size: 1.5em;
-    text-align: left;
-    padding-top: 10px;
-    background-color: white;
+   
+    background-color: #18181b;
+    color:white;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 25px;
+
+    border-color: #2b2b2b;
+    box-shadow: 0 0 10px #2b2b2b;
+}
+li{
+    list-style-type: none;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+    border-radius: 25px;
+}
+/*Links*/
+.dropdown > ul li a{
+    color:white;
+    text-decoration: none;
 }
 
-.dropdown > ul li a{
-    color:black;
-    text-decoration: none;
-    
+/*List items themselves*/
+.dropdown > ul li{
+
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: 1em;
+}
+
+.dropdown > ul li:hover{
+    background-color: #2b2b2b;
+    transition: all 0.3s ease;
+}
+
+/*Border bottom corners of the final list item should curver*/
+.dropdown > ul li:last-child{
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.dropdown > ul li:first-child{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+/*Border bottom corners of the final list item should curver*/
+.dropdown > ul li:last-child{
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 /*Only affects when you have the links in the sub menu*/
 .dropdown ul li a:hover{
+    
     padding-left: 10px;
     border-left: 2px solid #3ca0e7;
     color: #3ca0e7;
