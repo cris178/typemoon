@@ -15,6 +15,7 @@ class DropDown extends React.Component{
         listOpen: this.props.clicked
       });
     }
+    //fixed
     render(){
       console.log("prop: "+ this.props.style.visibility)
         
