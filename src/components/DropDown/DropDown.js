@@ -17,15 +17,14 @@ class DropDown extends React.Component{
     }
     //fixed
     render(){
-      console.log("prop: "+ this.props.style.visibility)
         
         return(
             <div className="dropdown" style={this.props.style}>
               <ul>
-                <li><a href="#">Delete</a></li>
-                <li><a href="#">Edit</a></li>
-                <li><a href="#">Share</a></li>
-                <li><a href="#">Iconography</a></li>
+                <li><a>Delete</a></li>
+                <li><a>Edit</a></li>
+                <li><a>Share</a></li>
+                <li><a>Iconography</a></li>
               </ul>
             </div>
         );
