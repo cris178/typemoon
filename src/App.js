@@ -22,13 +22,13 @@ function App() {
   //use state is a hook that sets any variable as our state. The only arguement passed to the useState is the initial state.
   const  [posts, setPosts] = useState([]);
 
-  const Context = createContext(posts);
-    
+  //const Context = createContext(posts);
+
   //useEffect is pretty much component did mount. We will call a function to retrieve existing posts
   useEffect(()=>{
     //getData()
     getPosts()
-  },[posts]); //// Only re-run the effect if posts changes
+  },[]); //// Only re-run the effect if posts changes
 
   async function getPosts(){
     //const result = await API.graphql(graphqlOperation(listPosts));//graphql() is a promise
