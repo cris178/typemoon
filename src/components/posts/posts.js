@@ -1,6 +1,6 @@
 import React from 'react';
 import './posts.css';
-import DropDown from './dropdown';
+import DropDown from '../dropdown/dropdown';
 
 
 
