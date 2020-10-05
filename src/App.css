@@ -11,7 +11,13 @@ body{
 
 /*AUTHENTICATOR AWS COGNITO*/
 .Section__container___3YYTG{
-  
+  padding:0px;
+  margin: 0px;
+  display: none;
+}
+
+.Nav__navBar___xtCFA{
+  display: none;
 }
 
 .Toast__toast___XXr3v{
@@ -63,7 +69,7 @@ body{
 nav{
   background-color: #18181b;
   color: #ececee;
-  height: 5vh;
+  height: 3em;
 }
 
 .logo{

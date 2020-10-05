@@ -6,13 +6,16 @@ class DropDown extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            listOpen: false
+            listOpen: false,
+            options:[]
         }
     }
 
     componentDidMount(){
+      const setOptions = ["Delete","Edit","Share"];
       this.setState({
-        listOpen: this.props.clicked
+        listOpen: this.props.clicked,
+        options: setOptions
       });
     }
     //fixed
@@ -21,10 +24,9 @@ class DropDown extends React.Component{
         return(
             <div className="dropdown" style={this.props.style}>
               <ul>
-                <li><a>Delete</a></li>
-                <li><a>Edit</a></li>
-                <li><a>Share</a></li>
-                <li><a>Iconography</a></li>
+                {this.state.options.map((option,index)=>{
+                  return(<li key={index}><a>{option}</a></li>)
+                })}
               </ul>
             </div>
         );

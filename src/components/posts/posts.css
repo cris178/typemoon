@@ -59,11 +59,14 @@
 .dropdownIcon{
     font-size: larger;
     font-weight: bold;
+    width: 15px;
+    text-align: center;
     border-radius: 25px;
 }
 
 .dropdownIcon:hover{
-    background-color: #2b2b2b;
+    background-color: lightcoral;
+    transition: all 0.8s ease;
 }
 
 

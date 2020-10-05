@@ -53,7 +53,7 @@ class Posts extends React.Component{
                     <div className="reply">Reply</div>
                     <div className="comments">See Comments</div>
                     <div className="likes">Likes</div>
-                    <div onClick={this.setClick}className="dropdownIcon">"^"</div>
+                    <div onClick={this.setClick}className="dropdownIcon">+</div>
                     <DropDown style={style}  clicked={this.state.clicked}></DropDown>
                 </div>
                 

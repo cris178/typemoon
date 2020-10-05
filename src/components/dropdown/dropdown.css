@@ -50,17 +50,18 @@ ul{
 .dropdown > ul li:first-child{
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    padding-top: 20px;
 }
 
 /*Border bottom corners of the final list item should curver*/
 .dropdown > ul li:last-child{
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
+    padding-bottom: 20px;
 }
 
 /*Only affects when you have the links in the sub menu*/
 .dropdown ul li a:hover{
-    
     padding-left: 10px;
     border-left: 2px solid #3ca0e7;
     color: #3ca0e7;

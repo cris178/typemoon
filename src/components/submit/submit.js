@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from 'aws-amplify';
+import { API, graphqlOperation,Auth } from 'aws-amplify';
 import {createPost} from '../../graphql/mutations';
 import React from 'react';
 import './submit.css';
@@ -20,6 +20,14 @@ class Submit extends React.Component{
 
     componentDidMount = async  () =>{
         //Todo later
+       await Auth.currentUserInfo().then(user =>{
+            console.log("Curr User: " + user.username);
+            console.log("Attributes: "+ user.attributes.sub);
+            this.setState({
+                postOwnerId:user.attributes.sub,
+                postOwnerUsername: user.username,
+            })
+       });
     }
 
     //How to use enter key on forms https://www.pluralsight.com/guides/how-to-enter-key-event-handler-on-a-react-bootstrap-input-component
@@ -42,9 +50,9 @@ class Submit extends React.Component{
             event.preventDefault();
         }
         const input ={
-            postOwnerId: "pallyA97",//this.state.postOwnerId,
-            postOwnerUsername: "Jhin",//this.state.postOwnerUsername,
-            postTitle: "Jhin's Title!",
+            postOwnerId: this.state.postOwnerId,
+            postOwnerUsername: this.state.postOwnerUsername,
+            postTitle: "Text: ",
             postBody: this.state.submission,
             createdAt: new Date().toISOString()
         }
@@ -53,8 +61,6 @@ class Submit extends React.Component{
 
         //After sending the data we want to clean up.
         this.setState({
-            postOwnerId:"",
-            postOwnerUsername:"",
             postTitle:"",
             submission:""
         })
