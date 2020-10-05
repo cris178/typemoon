@@ -2,6 +2,7 @@ import React,{useEffect, useState, createContext} from 'react';
 import './App.css';
 import Submit from './components/submit/submit';
 import Posts from './components/posts/posts';
+import {withAuthenticator} from 'aws-amplify-react';
 
 
 
@@ -33,7 +34,7 @@ function App() {
   },[]); //// Only re-run the effect if posts changes
 
 
-
+  //UseEffect seperate just for subsctiption
   useEffect(()=>{
     //In regular componentdidmount we would have to use this.createPostListener instead of a variable
     const createPostListener = API.graphql(graphqlOperation(onCreatePost))
@@ -125,4 +126,7 @@ function App() {
   );
 }
 
+
 export default App;
+//Can set second arguement to false to remove greeting
+//export default withAuthenticator(App,{includeGreetings:true});

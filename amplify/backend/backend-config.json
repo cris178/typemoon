@@ -22,5 +22,13 @@
 			"service": "amplifyhosting",
 			"type": "cicd"
 		}
+	},
+	"auth": {
+		"typemoon6d266515": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
 	}
 }

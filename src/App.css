@@ -3,10 +3,61 @@ html{
   padding: 0px;
 }
 
-
 body{
- background-color: black;
+  background-color: black;
+}
+
+
+
+/*AUTHENTICATOR AWS COGNITO*/
+.Section__container___3YYTG{
   
+}
+
+.Toast__toast___XXr3v{
+  text-align: center;
+  visibility: hidden;
+  width: 100%;
+  position: fixed;
+  bottom: 1px;
+}
+
+.Toast__toast___XXr3v>span::before{
+  visibility: visible;
+  color: yellow;
+  content:"Username can't contain spaces, password  must be more than 8 chars."
+}
+
+.Section__container___3YYTG{
+  margin-top: 5em;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:white;
+}
+.Section__container___3YYTG{
+  flex-grow: 4;
+  top:50%;
+  justify-content: center;
+}
+
+.Anchor__a___1_Iz8{
+  color:yellow;
+}
+.Anchor__a___1_Iz8:hover{
+  cursor: pointer;
+}
+.Button__button___vS7Mv{
+  background-color: black;
+  color:white;
+  border-color: white;
+  border-width: 1px;
+  font-size: 1em;
+  padding: 5px;
+}
+
+.Button__button___vS7Mv:hover{
+  cursor: pointer;
 }
 
 nav{

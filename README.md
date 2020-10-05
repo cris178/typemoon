@@ -6,6 +6,11 @@ Libraries installed
 
 npm install aws-amplify aws-amplify-react //We need to interact with the appsync api using react.
 
+# Hosting
+
+AWS hosting allows for you're app to have CI/CD capabilities through Github. The main branch will be checked for changes and then built and deployed by AWs.
+AWS also allows for existing domains to connect to the web app.
+
 # AWS Amplifly
 
 Initialized the project using the AWS amplify cli. The amplify cli is a command line interface that allows us to select which AWS services we would want. 
@@ -75,6 +80,14 @@ npm install aws-amplify aws-amplify-react //We need to interact with the appsync
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
+
+
+# Authentication
+
+* amplify add auth
+
+
+Using Amazon Cognito we can authenticate users. We used default config, username, and done.
 
 
 
