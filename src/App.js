@@ -14,7 +14,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 //Import mutations and queriries 
 import {listPosts} from './graphql/queries';
 import { ConfirmSignUp } from 'aws-amplify-react';
-import { onCreatePost } from './graphql/subscriptions';
+import { onCreatePost, onDeletePost } from './graphql/subscriptions';
 
 
 
@@ -47,9 +47,21 @@ function App() {
           setPosts(updatedPosts);
         }
       });
+
+      //This is another subscription but for deleting posts! This will autmatically remove posts instead of having to refresh
+      const deletePostListener = API.graphql(graphqlOperation(onDeletePost))
+        .subscribe({
+          next: postData =>{
+            const deletedPost = postData.value.data.onDeletePost;
+            const updatedPosts = posts.filter(post => post.id !== deletedPost.id);
+            setPosts(updatedPosts); 
+          }
+        });
+
     //We need to unsubscribe to avoid memory leaks
     return() =>{
       createPostListener.unsubscribe();
+      deletePostListener.unsubscribe();
     };
   });
 
@@ -57,7 +69,7 @@ function App() {
     const result = await API.graphql(graphqlOperation(listPosts));//graphql() is a promise
     console.log("All posts: ", JSON.stringify(result.data.listPosts.items));
     setPosts(result.data.listPosts.items);
-    
+
     //Temp data to not pass AWS limit
     /*const getPost = [
       {postTile: "Title of post", postBody: "This is a long form post. It should carry out the limit of characters in the text. This is a test to see how to restrict the box size.", postOwnerUsername:"Testing Terry",updatedAt:"2020-09-27T06:20:30.296Z"},
@@ -114,7 +126,7 @@ function App() {
               <div className="timelinePosts">
               {posts.map((post,index)=>{
                 //return(<Posts key={index} postText={post}/>);
-                return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt}/>);
+                return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id}/>);
               })}
                 
               </div>      

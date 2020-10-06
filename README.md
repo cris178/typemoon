@@ -88,6 +88,9 @@ Amplify.configure(awsExports);
 
 
 Using Amazon Cognito we can authenticate users. We used default config, username, and done.
+We need to add this to app 
+
+* export default withAuthenticator(App,{includeGreetings:true});
 
 
 
