@@ -1,6 +1,7 @@
 import React from 'react';
 import './posts.css';
 import DropDown from '../dropdown/dropdown';
+import Comments from '../comments/comments';
 
 
 
@@ -51,7 +52,7 @@ class Posts extends React.Component{
 
                 <div className="postActions">
                     <div className="reply">Reply</div>
-                    <div className="comments">See Comments</div>
+                    <Comments />
                     <div className="likes">Likes</div>
                     <div onClick={this.setClick}className="dropdownIcon">+</div>
                     <DropDown style={style}  postID={this.props.postID} clicked={this.state.clicked}></DropDown>

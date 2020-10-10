@@ -67,3 +67,25 @@ ul{
     color: #3ca0e7;
     transition: all 0.3s ease;
 }
+
+
+
+/*
+EDIT MODAL CSS
+
+
+*/
+.editModal{
+    z-index: 100;
+   
+    
+    
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background-color: #18181b;
+
+    border-style: solid;
+    border-color: #2b2b2b;
+    box-shadow: 0 0 10px #2b2b2b;
+}

@@ -93,6 +93,13 @@ We need to add this to app
 * export default withAuthenticator(App,{includeGreetings:true});
 
 
+# React Hooks
+
+This app is the first time using stateful functions instead of the standard components. UseEffect is several React lifecycle methods combined into one.
+Usestate is pretty much that same old state management but with built in setters and getters. Use context allows us to send props several level deep without 
+passing props.
+
+
 
 
 

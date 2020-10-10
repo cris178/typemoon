@@ -1,0 +1,9 @@
+.comments{
+    border-radius: 25px;
+    padding: 0 5px;
+}
+
+.comments:hover{
+    background-color: lightcoral;
+    transition: all 0.8s ease;
+}

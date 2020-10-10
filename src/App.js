@@ -3,6 +3,7 @@ import './App.css';
 import Submit from './components/submit/submit';
 import Posts from './components/posts/posts';
 import {withAuthenticator} from 'aws-amplify-react';
+import {Context} from './context';
 
 
 
@@ -24,7 +25,8 @@ import { onCreatePost, onDeletePost } from './graphql/subscriptions';
 function App() {
   //use state is a hook that sets any variable as our state. The only arguement passed to the useState is the initial state.
   const  [posts, setPosts] = useState([]);
-
+  const [showEdit, setEdit] = useState(false);
+  const [user,setUser] = useState(null);
   //const Context = createContext(posts);
 
   //useEffect is pretty much component did mount. We will call a function to retrieve existing posts
@@ -120,19 +122,34 @@ function App() {
      <nav>
         <div className="logo">TypeMoon</div>
      </nav>
-     <div className="container">
-        <div className="timeline">
-              <Submit />
-              <div className="timelinePosts">
-              {posts.map((post,index)=>{
-                //return(<Posts key={index} postText={post}/>);
-                return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id}/>);
-              })}
-                
-              </div>      
+
+
+     <Context.Provider value={{user,setUser}}>
+      {
+        //The modal that will show based on edit state
+        showEdit && (
+          <div className="editModal">
+            <button className="editModalButton" onClick={this.handleModal}>
+            </button>
           </div>
-     </div>
-     
+        )
+          
+      }
+      <div className="container">
+          <div className="timeline">
+                <Submit />
+                <div className="timelinePosts">
+                {posts.map((post,index)=>{
+                  //return(<Posts key={index} postText={post}/>);
+                  return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id}/>);
+                })}
+                  
+                </div>      
+            </div>
+      </div>
+     </Context.Provider>
+
+
 
     </div>
   );
