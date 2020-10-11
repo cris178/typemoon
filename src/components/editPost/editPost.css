@@ -1,0 +1,150 @@
+
+.editPost{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 300;
+    top: 0;
+    display: flex;
+    background-color: black;
+    color: white;
+    
+  }
+  
+  #modal-input-container {
+    margin-bottom: 40px;
+    width: 280px;
+    text-align: center;
+  }
+  
+  .modal-input-container {
+    padding: 24px 20px 28px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 2px 21px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 21px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 21px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+  }
+  
+  .property-list-large {
+    grid-gap: 12px;
+  }
+  
+  .property-list, .property-list-small, .property-list-large {
+    display: grid;
+  }
+  .property-list-small {
+    grid-gap: 4px;
+  }
+  
+  .property-item {
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #modal-input-container input {
+    padding: 3px 12px;
+    font-size: 13px;
+  }
+  
+  .ui input[type="url"], .ui input[type="text"], .ui input[type="email"], .ui input[type="password"], .ui input[type="number"] {
+    width: 40px;
+    
+    max-height: 22px;
+  }
+  
+  .modal-input-container .title {
+    font-size: 17px;
+    line-height: 19px;
+    text-transform: none;
+    pointer-events: none;
+  }
+  
+  input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto; 
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    font: 400 13.3333px Arial;
+  }
+  
+  .ui h1, .ui h2, .ui h3, .ui h4, .ui h5, .ui h6 {
+    color: #cbcbcb;
+    letter-spacing: 0.4px;
+    margin: unset;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  
+  .ui .custom-select-options, .ui .custom-select label, .ui select, .ui input[type="text"], .ui input[type="email"], .ui input[type="password"], .ui input[type="url"], .ui input[type="number"] {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+    
+    letter-spacing: 0.3px;
+    margin: unset;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+  }
+  
+  
+  
+  h6 {
+    display: block;
+    margin-block-start: 2.33em;
+    margin-block-end: 2.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+  
+  .ui {
+    background-color: #2e2f30;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
+  .button.active {
+    color: white;
+    background-color: #017aff;
+}
+
+#modal-input-container .button {
+    min-height: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.button {
+   
+    border: none;
+    border-radius: 5px;
+    padding: 5px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.3px;
+    cursor: default;
+    
+    margin: unset;
+}

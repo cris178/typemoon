@@ -39,12 +39,7 @@ function DropDown (props){
 
   async function handleEditPost(postID){
     console.log("Editing Post: " + postID);
-  }
-
-  
-  
-  if(user){
-    console.log("Logging user:" + user.postOwnerId);
+    props.handle(postID);
   }
   /*
   if(props.style !== view){
