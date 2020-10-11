@@ -69,18 +69,18 @@ function App() {
   });
 
   async function getPosts(){
-    /*const result = await API.graphql(graphqlOperation(listPosts));//graphql() is a promise
+    const result = await API.graphql(graphqlOperation(listPosts));//graphql() is a promise
     console.log("All posts: ", JSON.stringify(result.data.listPosts.items));
-    setPosts(result.data.listPosts.items);*/
+    setPosts(result.data.listPosts.items);
 
     //Temp data to not pass AWS limit
-    const getPost = [
+    /*const getPost = [
       {postTile: "Title of post", postBody: "This is a long form post. It should carry out the limit of characters in the text. This is a test to see how to restrict the box size.", postOwnerUsername:"Testing Terry",updatedAt:"2020-09-27T06:20:30.296Z"},
       {postTile: "Title of post", postBody: "This is a long form post. It should carry out the limit of characters in the text. This is a test to see how to restrict the box size.", postOwnerUsername:"Testing Terry",updatedAt:"2020-09-27T06:20:30.296Z"},
       {postTile: "Title of post", postBody: "This is a long form post. It should carry out the limit of characters in the text. This is a test to see how to restrict the box size.", postOwnerUsername:"Testing Terry",updatedAt:"2020-09-27T06:20:30.296Z"},
       {postTile: "Title of post", postBody: "This is a long form post. It should carry out the limit of characters in the text. This is a test to see how to restrict the box size.", postOwnerUsername:"Testing Terry",updatedAt:"2020-09-27T06:20:30.296Z"}]
     console.log("Dummy Data: " + getPost);
-    setPosts(getPost);
+    setPosts(getPost);*/
   }
 
   function showEditModal(val){
