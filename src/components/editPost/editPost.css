@@ -6,8 +6,9 @@
     z-index: 300;
     top: 0;
     display: flex;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.50);
     color: white;
+    
     
   }
   
@@ -80,6 +81,14 @@
     cursor: text;
     font: 400 13.3333px Arial;
   }
+
+  /*
+  .ui input[type="text"]:focus{
+    border-color: #A907ff;
+    border-width: 1px;
+    transition: box-shadow .1s ease-in, border .1s ease-in, background-color .1s ease-in;
+  }
+  */
   
   .ui h1, .ui h2, .ui h3, .ui h4, .ui h5, .ui h6 {
     color: #cbcbcb;

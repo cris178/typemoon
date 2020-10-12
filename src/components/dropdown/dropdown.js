@@ -35,6 +35,7 @@ function DropDown (props){
     }
     //input needs to be passed in as an object
     await API.graphql(graphqlOperation(deletePost, {input}));
+    setView({visibility:'hidden'});
   }
 
   async function handleEditPost(postID){

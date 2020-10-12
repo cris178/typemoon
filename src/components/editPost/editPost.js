@@ -1,8 +1,16 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState, useContext} from 'react';
 import './editPost.css';
+import {Context} from '../../context';
+import { API, graphqlOperation } from 'aws-amplify';
+import { updatePost } from '../../graphql/mutations';
 
 function EditPost (props){
     const [submission, setSubmission] = useState("");
+    const {user,setUser} = useContext(Context);
+
+    useEffect(()=>{
+      setSubmission(props.body);
+    },[]);
 
     function handleTermChange(event){
         console.log(event.target.value);
@@ -20,16 +28,21 @@ function EditPost (props){
         const input ={
             //postOwnerId: user.postOwnerId,
             //postOwnerUsername: user.postOwnerUsername,
+            id: props.id,
+            postOwnerId: user.postOwnerId,
+            postOwnerUsername: user.postOwnerUsername,
             postTitle: "Text: ",
             postBody: submission,
-            createdAt: new Date().toISOString()
+
         }
         console.log("Editing: "+ input.postOwnerId + input.postOwnerUsername);
+        await API.graphql(graphqlOperation(updatePost,{input}));
         //pass in the input object we just created
        //await API.graphql(graphqlOperation(createPost, {input}));
 
         //After sending the data we want to clean up.
         setSubmission("");
+        exit();
 
     }
     function exit(){
@@ -38,9 +51,7 @@ function EditPost (props){
 
     return(
         <div className="editPost">
-          <nav>
-            <div className="logo">TypeMoon</div>
-          </nav>
+         
           <div style={{margin: "auto", position: "relative" }}>
               <form role="form" id="modal-input-container" className="ui modal-input-container property-list-large">
                 <div className="property-list-small">
@@ -51,7 +62,7 @@ function EditPost (props){
                 
                 <div className="property-list">
                   <div className="property-item">
-                    <input type="text" onKeyPress={onKeyUp} onChange={handleTermChange} placeholder="What's happening?" autoFocus="" style={{flex: 1}} />
+                    <input type="text" onKeyPress={onKeyUp} onChange={handleTermChange} value={submission} style={{flex: 1}} />
                   </div>
                 </div>
 

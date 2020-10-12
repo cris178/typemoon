@@ -16,7 +16,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 //Import mutations and queriries 
 import {listPosts} from './graphql/queries';
 import { ConfirmSignUp } from 'aws-amplify-react';
-import { onCreatePost, onDeletePost } from './graphql/subscriptions';
+import { onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
 
 
 
@@ -27,6 +27,8 @@ function App() {
   //use state is a hook that sets any variable as our state. The only arguement passed to the useState is the initial state.
   const  [posts, setPosts] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
+  const [editBody,setEditBody] = useState('');
+  const [editPostID, setEditPostID] = useState('');
   const [user,setUser] = useState(null);
   
   //useEffect is pretty much component did mount. We will call a function to retrieve existing posts
@@ -55,16 +57,31 @@ function App() {
       const deletePostListener = API.graphql(graphqlOperation(onDeletePost))
         .subscribe({
           next: postData =>{
+            console.log('Delete Listener working!')
             const deletedPost = postData.value.data.onDeletePost;
             const updatedPosts = posts.filter(post => post.id !== deletedPost.id);
             setPosts(updatedPosts); 
           }
         });
 
+        //Listner to edit posts!
+        const updatePostListener = API.graphql(graphqlOperation(onUpdatePost))
+          .subscribe({
+            next: postData =>{
+            console.log("updatePost Listner!");
+            const updatePost = postData.value.data.onUpdatePost;
+            const index = posts.findIndex(post => post.id === updatePost.id);
+            const updatePosts = [...posts.slice(0,index), updatePost, ...posts.slice(index + 1)]; //Puts the updated post in the middle of any content before it or after it
+            setPosts(updatePosts);
+            
+          }
+        })
+
     //We need to unsubscribe to avoid memory leaks
     return() =>{
       createPostListener.unsubscribe();
       deletePostListener.unsubscribe();
+      updatePostListener.unsubscribe();
     };
   });
 
@@ -83,9 +100,12 @@ function App() {
     setPosts(getPost);*/
   }
 
-  function showEditModal(val){
+  function showEditModal(val,body){
     setShowEdit(true);
+    setEditBody(body);
+    setEditPostID(val);
     console.log("On edit Click should receive posts ID: " + val);
+    console.log("Body of post being edited: " + body);
   }
 
   function hideModal(){
@@ -95,19 +115,21 @@ function App() {
   
   return (
     <div className="App">
+
+    <Context.Provider value={{user,setUser}}>
+
     {
       //The modal that will show based on edit state
       showEdit && (
-        <EditPost hideModal={hideModal}/>
+        <EditPost hideModal={hideModal} body={editBody} id={editPostID}/>
       )
         
     }
+
      <nav>
         <div className="logo">TypeMoon</div>
      </nav>
 
-
-     <Context.Provider value={{user,setUser}}>
       <div className="container">
           <div className="timeline">
                 <Submit />

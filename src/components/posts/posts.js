@@ -36,7 +36,7 @@ function Posts (props){
                 <Comments />
                 <div className="likes">Likes</div>
                 <div onClick={setClick}className="dropdownIcon">+</div>
-                <DropDown style={optionStyle}  postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val);}}></DropDown>
+                <DropDown style={optionStyle}  postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body,props.postID);}}></DropDown>
             </div>
             
         </div>
