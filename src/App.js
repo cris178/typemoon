@@ -54,7 +54,7 @@ function App() {
       });
 
       //This is another subscription but for deleting posts! This will autmatically remove posts instead of having to refresh
-      const deletePostListener = API.graphql(graphqlOperation(onDeletePost))
+      const deletePostListener =  API.graphql(graphqlOperation(onDeletePost))
         .subscribe({
           next: postData =>{
             console.log('Delete Listener working!')
@@ -70,12 +70,14 @@ function App() {
             next: postData =>{
             console.log("updatePost Listner!");
             const updatePost = postData.value.data.onUpdatePost;
+            console.log("The updated post that will replace onld content: " + updatePost.id);
             const index = posts.findIndex(post => post.id === updatePost.id);
             const updatePosts = [...posts.slice(0,index), updatePost, ...posts.slice(index + 1)]; //Puts the updated post in the middle of any content before it or after it
             setPosts(updatePosts);
-            
+            hideModal();
           }
-        })
+        });
+        //
 
     //We need to unsubscribe to avoid memory leaks
     return() =>{

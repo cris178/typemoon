@@ -14,9 +14,6 @@ function DropDown (props){
     //getUser();
     setView(props.style);
     //clean up function runs before component destroyed
-    return() =>{
-      setView({visibility:'hidden'});
-    }
   },[props.style]); //Dependency makes so that the useEffect runs every time the prop changes
 
   //Handle the Option Selected!

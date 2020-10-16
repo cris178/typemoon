@@ -5,6 +5,12 @@ import Comments from '../comments/comments';
 
 function Posts (props){
     const [optionsClicked,setOptionsClicked] = useState(false);
+    const [body, setBody] = useState("");
+
+    useEffect(()=>{
+        setBody(props.body);
+        setOptionsClicked(false);
+    },[props.body]);
 
     function setClick(){
         setOptionsClicked(!optionsClicked);
@@ -28,7 +34,7 @@ function Posts (props){
             </div>
             <div className="PostText">
                 {props.title}
-                {props.body}
+                {body}
             </div>
 
             <div className="postActions">

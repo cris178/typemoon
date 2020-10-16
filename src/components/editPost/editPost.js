@@ -10,13 +10,14 @@ function EditPost (props){
 
     useEffect(()=>{
       setSubmission(props.body);
-    },[]);
+    },[props.body]);
 
     function handleTermChange(event){
         console.log(event.target.value);
         setSubmission(event.target.value);
     }
-    function onKeyUp(event){
+    async function onKeyUp(event){
+      //Potential issue. The keyup is detected mutiple times and ran twice. Need to catch per second maybe.
         if (event.charCode === 13) {
             handleSubmission(1);
         }
@@ -25,27 +26,29 @@ function EditPost (props){
         if(event !== 1){
             event.preventDefault();
         }
+       
+
         const input ={
-            //postOwnerId: user.postOwnerId,
-            //postOwnerUsername: user.postOwnerUsername,
             id: props.id,
             postOwnerId: user.postOwnerId,
             postOwnerUsername: user.postOwnerUsername,
             postTitle: "Text: ",
-            postBody: submission,
-
+            postBody: submission
         }
-        console.log("Editing: "+ input.postOwnerId + input.postOwnerUsername);
-        await API.graphql(graphqlOperation(updatePost,{input}));
-        //pass in the input object we just created
-       //await API.graphql(graphqlOperation(createPost, {input}));
-
-        //After sending the data we want to clean up.
+        
+        console.log("Sending Edit through GraphQL-----");
+        console.log("Sending id: " + input.id);
+        console.log("Sending Edite Post Body: " + input.postBody);
+        console.log("Sending username and userid: " + input.postOwnerUsername + " "+ input.postOwnerId);
+        console.log("----------");
         setSubmission("");
-        exit();
+        await API.graphql(graphqlOperation(updatePost,{input}));
+        //exit();
+        
 
     }
     function exit(){
+        
         props.hideModal();
     }
 
