@@ -100,6 +100,15 @@ Usestate is pretty much that same old state management but with built in setters
 passing props.
 
 
+# Bugs
+
+Some issues too look into or solved issues that were interesting. 
+
+
+EditPost Subscription:  In order to edit a post the subscription needed to fire when the async updatepost call was made. After that async function I had a hide modal function fire afterwards which also happened in the same js file that the subscription ran. My theory is the subscription didn't run because the handleModal function was running instead. 
+
+
+
 
 
 
