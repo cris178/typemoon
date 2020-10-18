@@ -102,7 +102,7 @@
   .ui .custom-select-options, .ui .custom-select label, .ui select, .ui input[type="text"], .ui input[type="email"], .ui input[type="password"], .ui input[type="url"], .ui input[type="number"] {
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 5px;
-    
+    text-indent: 0px;
     letter-spacing: 0.3px;
     margin: unset;
     background-color: rgba(255, 255, 255, 0.1);

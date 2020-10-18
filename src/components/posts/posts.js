@@ -2,9 +2,12 @@ import React, {useEffect, useState, useContext} from 'react';
 import './posts.css';
 import DropDown from '../dropdown/dropdown';
 import Comments from '../comments/comments';
+import CreateCommentPost from '../comments/createCommentPost';
+import { createComment } from '../../graphql/mutations';
 
 function Posts (props){
     const [optionsClicked,setOptionsClicked] = useState(false);
+    const [commentsVisibility, setCommentsVisibility] = useState(false);
     const [body, setBody] = useState("");
 
     useEffect(()=>{
@@ -15,6 +18,12 @@ function Posts (props){
     function setClick(){
         setOptionsClicked(!optionsClicked);
     }
+
+    function showComments(value){
+        console.log(commentsVisibility);
+        setCommentsVisibility(!commentsVisibility);
+    }
+
     let optionStyle;
     if(optionsClicked){
         optionStyle ={
@@ -39,11 +48,17 @@ function Posts (props){
 
             <div className="postActions">
                 <div className="reply">Reply</div>
-                <Comments />
+                <Comments handleComments={showComments}/>
                 <div className="likes">Likes</div>
                 <div onClick={setClick}className="dropdownIcon">+</div>
                 <DropDown style={optionStyle}  postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body);}}></DropDown>
             </div>
+
+            {
+                commentsVisibility && (
+                <CreateCommentPost />
+               )
+            }
             
         </div>
     );

@@ -1,7 +1,7 @@
-import React,{useEffect, useState, useeContext} from 'react';
+import React,{useEffect, useState, useContext} from 'react';
 import {Context} from '../../context';
 import {Auth} from 'aws-amplify';
-import './comments.css'
+import './createCommentPost.css';
 
 function Comments() {
 
@@ -22,13 +22,18 @@ function Comments() {
         
     }
 
-    function handleClick(){
+    function handleClick(e){
+        e.preventDefault();
+        console.log("Comment button clicked");
 
     }
     
         return(
-            <div className="createCommentPost" onClick={handleClick}>
-                see comments
+            <div className="createCommentPost">
+                <form>
+                    <input type="text" placeholder={"write a comment"} style={{flex: 1}} />
+                    <button className="commentButton" onClick={handleClick}>Send</button> 
+                </form>
             </div>
         );
 

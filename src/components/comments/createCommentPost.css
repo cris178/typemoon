@@ -1,0 +1,33 @@
+
+.createCommentPost{
+    margin-top: 1em;
+    background-color: black;
+    width: 100%;
+    /*height: 3em;*/ /*Remove this for scale when other posts can be added.*/
+}
+
+.createCommentPost form input{
+    padding: 0px;
+    background-color: black;
+    border-color: #2b2b2b;
+    border-style: solid;
+    border-width: 0.5px;
+    height: 1.5em;
+    width: 100%;
+}
+
+.createCommentPost form input label{
+    padding-left: 10px;
+}
+
+.commentButton{
+    position: relative;
+    float: right;
+    border: none;
+    width: 4em;
+    height: 1.5em;
+    /*background-color: purple;*/
+    background-color: black;
+    color:gray;
+    bottom: 1.7em;
+}
