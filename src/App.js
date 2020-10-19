@@ -16,7 +16,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 //Import mutations and queriries 
 import {listPosts} from './graphql/queries';
 import { ConfirmSignUp } from 'aws-amplify-react';
-import { onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
+import { onCreateComment, onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
 
 
 
@@ -78,12 +78,26 @@ function App() {
           }
         });
         //
+        const createPostCommentListener = API.graphql(graphqlOperation(onCreateComment))
+        .subscribe({
+          next: commentData =>{
+            const createdComment = commentData.value.data.onCreateComment;
+            let postsTemp = [...posts]; //Grab a copy of all of our posts
+            for(let post of postsTemp){ //iterate through each post see if new comment belongs to a specific post.
+              if(createdComment.post.id = post.id){
+                post.comments.items.push(createdComment);
+              }
+            }
+            setPosts(postsTemp);
+          }
+        })
 
     //We need to unsubscribe to avoid memory leaks
     return() =>{
       createPostListener.unsubscribe();
       deletePostListener.unsubscribe();
       updatePostListener.unsubscribe();
+      createPostListener.unsubscribe();
     };
   });
 
@@ -138,7 +152,7 @@ function App() {
                 <div className="timelinePosts">
                 {posts.map((post,index)=>{
                   //return(<Posts key={index} postText={post}/>);
-                  return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id} handleModal={showEditModal}/>);
+                  return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id} comments={post.comments} handleModal={showEditModal}/>);
                 })}
                   
                 </div>      

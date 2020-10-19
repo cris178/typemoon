@@ -1,9 +1,32 @@
 .comments{
-    border-radius: 25px;
-    padding: 0 5px;
+    color:white;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    width: 100%;
+    display: inline-block;
+   
+    border-left-color: aliceblue ;
+    border-left-width: 1px;
+   border-bottom: 1px solid black;
+}
+.commentsList > .comments:first-child{
+    margin-top: -500px;
 }
 
-.comments:hover{
-    background-color: lightcoral;
-    transition: all 0.8s ease;
+.metaData{
+    color: white;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    display: inline-block;
+}
+
+.commentUser{
+    font-weight: bold;
+    display: inline;
+    
+}
+
+.metaData > time{
+    font-size: 0.7em;
+    float: right;
 }

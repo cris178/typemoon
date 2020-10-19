@@ -1,5 +1,5 @@
 # TypeMoon
-A Simple Typography Tool for the Web
+A Simple Twitter clone built using an AWS cloud stack including services such as Appsync, GraphQL, Amazon Dynamo DB, 
 
 
 Libraries installed

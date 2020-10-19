@@ -3,23 +3,26 @@ import './posts.css';
 import DropDown from '../dropdown/dropdown';
 import Comments from '../comments/comments';
 import CreateCommentPost from '../comments/createCommentPost';
+import Comment from '../comments/comments';
 import { createComment } from '../../graphql/mutations';
 
 function Posts (props){
     const [optionsClicked,setOptionsClicked] = useState(false);
     const [commentsVisibility, setCommentsVisibility] = useState(false);
     const [body, setBody] = useState("");
+    const [comments, setcomments] = useState([]);
 
     useEffect(()=>{
         setBody(props.body);
         setOptionsClicked(false);
-    },[props.body]);
+        setcomments(props.comments);
+    },[props.body,props.comments]);
 
     function setClick(){
         setOptionsClicked(!optionsClicked);
     }
 
-    function showComments(value){
+    function showComments(){
         console.log(commentsVisibility);
         setCommentsVisibility(!commentsVisibility);
     }
@@ -48,7 +51,7 @@ function Posts (props){
 
             <div className="postActions">
                 <div className="reply">Reply</div>
-                <Comments handleComments={showComments}/>
+                <div className="commentsButton" onClick={showComments}> comments</div>
                 <div className="likes">Likes</div>
                 <div onClick={setClick}className="dropdownIcon">+</div>
                 <DropDown style={optionStyle}  postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body);}}></DropDown>
@@ -56,10 +59,23 @@ function Posts (props){
 
             {
                 commentsVisibility && (
-                <CreateCommentPost />
+                    <div className="commentsList">
+                        <CreateCommentPost postID={props.postID}/>
+                        {comments.items.map((comment,index)=>{
+                            //console.log("Inside: "+body+ " looking at comment " + Object.keys(comment));
+                            return(<Comment key={index} content={comment.content}  userName={comment.commentOwnerUsername}  createdAt={comment.createdAt} />)
+                            //return(console.log())
+                        })}
+                    </div>
                )
             }
-            
+            {/*
+                props.comments.items.map((comment,index)=>{
+                    <span key={index}>Title: {comment.postTitle}</span>
+                    //<div key={index}  title={comment.postTitle} body={comment.postBody} userName = {comment.postOwnerUsername} date={comment.createdAt} postID={comment.id} comments={comment.comments} />
+                })
+                */
+            }
         </div>
     );
 }

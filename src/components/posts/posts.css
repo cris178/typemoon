@@ -55,6 +55,16 @@
     color: white;
 }
 
+.commentsButton{
+    border-radius: 25px;
+    padding: 0 5px;
+}
+
+.commentsButton:hover{
+    background-color: lightcoral;
+    transition: all 0.8s ease;
+}
+
 
 .dropdownIcon{
     font-size: larger;
