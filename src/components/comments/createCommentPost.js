@@ -9,7 +9,7 @@ function Comments(props) {
     //Fields required for createComment mutation
     const [commentOwnerIDState, setCommentOwnerID] = useState();
     const [commentOwnerUsernameState, setCommentOwnerUsername] = useState();
-    const [contentState, setContent] = useState();
+    const [contentState, setContent] = useState("");
 
     const {user,setUser} = useContext(Context);
 
@@ -39,12 +39,13 @@ function Comments(props) {
         setContent("");
         await API.graphql(graphqlOperation(createComment,{input}));
         
+        
     }
     
         return(
             <div className="createCommentPost">
-                <form>
-                    <input type="text" placeholder={"write a comment"} style={{flex: 1}} onChange={handleChange} />
+                <form role="form">
+                    <input type="text"  placeholder="Write comment"  style={{flex: 1}} onChange={handleChange} />
                     <button type="submit" className="commentButton" onClick={handleClick}>Send</button> 
                 </form>
             </div>

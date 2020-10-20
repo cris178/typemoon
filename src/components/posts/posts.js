@@ -15,11 +15,22 @@ function Posts (props){
     useEffect(()=>{
         setBody(props.body);
         setOptionsClicked(false);
+    },[props.body]);
+
+    useEffect(()=>{
         setcomments(props.comments);
-    },[props.body,props.comments]);
+        console.log("Running comments update useeffect: " + props.comments.items.length);
+    },[props.comments]);
 
     function setClick(){
         setOptionsClicked(!optionsClicked);
+    }
+    function displayComments(){
+        return comments.items.map((comment,index)=>{
+            //console.log("Inside: "+body+ " looking at comment " + Object.keys(comment));
+            return(<Comment key={index} content={comment.content}  userName={comment.commentOwnerUsername}  createdAt={comment.createdAt} />)
+            //return(console.log())
+        })
     }
 
     function showComments(){
@@ -61,20 +72,9 @@ function Posts (props){
                 commentsVisibility && (
                     <div className="commentsList">
                         <CreateCommentPost postID={props.postID}/>
-                        {comments.items.map((comment,index)=>{
-                            //console.log("Inside: "+body+ " looking at comment " + Object.keys(comment));
-                            return(<Comment key={index} content={comment.content}  userName={comment.commentOwnerUsername}  createdAt={comment.createdAt} />)
-                            //return(console.log())
-                        })}
+                        {displayComments()}
                     </div>
                )
-            }
-            {/*
-                props.comments.items.map((comment,index)=>{
-                    <span key={index}>Title: {comment.postTitle}</span>
-                    //<div key={index}  title={comment.postTitle} body={comment.postBody} userName = {comment.postOwnerUsername} date={comment.createdAt} postID={comment.id} comments={comment.comments} />
-                })
-                */
             }
         </div>
     );

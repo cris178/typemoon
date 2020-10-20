@@ -36,6 +36,8 @@ function App() {
     //getData()
     getPosts()
   },[]); //// Only re-run the effect if posts changes
+      //NEED [] or else it will continuely try to get posts. 
+      //Empty array means run only once when page is
   
 
 
@@ -81,23 +83,25 @@ function App() {
         const createPostCommentListener = API.graphql(graphqlOperation(onCreateComment))
         .subscribe({
           next: commentData =>{
+            console.log("Entered comment subscription.")
             const createdComment = commentData.value.data.onCreateComment;
             let postsTemp = [...posts]; //Grab a copy of all of our posts
             for(let post of postsTemp){ //iterate through each post see if new comment belongs to a specific post.
-              if(createdComment.post.id = post.id){
+              if(createdComment.post.id === post.id){
                 post.comments.items.push(createdComment);
               }
             }
             setPosts(postsTemp);
+            console.log("Leaving comment subscription.")
           }
-        })
+        });
 
     //We need to unsubscribe to avoid memory leaks
     return() =>{
       createPostListener.unsubscribe();
       deletePostListener.unsubscribe();
       updatePostListener.unsubscribe();
-      createPostListener.unsubscribe();
+      createPostCommentListener.unsubscribe();
     };
   });
 

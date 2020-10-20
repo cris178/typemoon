@@ -100,6 +100,13 @@ Usestate is pretty much that same old state management but with built in setters
 passing props.
 
 
+# Subscriptions
+
+Thanks to app sync subscriptions are a powerful took that automatically update our app when new data is added to the database. The cool thing about appsync is it will automaticlally
+update all apps running our code. If the app isn't auto updating it's a pretty clear indication that the subscription wasn't probably configured or unsubscribed. Comments weren't showing
+up unless I reloaded the page, it even auto relaoded at one point. It was all because I miss typed the subscription name wrong in the unsubscribe portion. It would even run the subscription multiple times
+causing a huge head scratcher!
+
 # Bugs
 
 Some issues too look into or solved issues that were interesting. 
