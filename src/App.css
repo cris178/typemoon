@@ -17,6 +17,24 @@ body{
   display: none;
 }
 
+.Section__container___3YYTG::before{
+  content: "Type Moon";
+  color:white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 2em;
+  position: absolute;
+  top: 0.1em;
+
+}
+
+.Section__container___3YYTG::after{
+  content: "A light weight messaging platform";
+  color:white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  position: absolute;
+  top: 3em;
+}
+
 .Nav__navBar___xtCFA{
   display: none;
 }
@@ -36,7 +54,7 @@ body{
 }
 
 .Section__container___3YYTG{
-  margin-top: 5em;
+  margin-top: 8em;
   display: flex;
   flex-direction: row;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -75,10 +93,10 @@ nav{
 
 .logo{
   position: absolute;
-  top: 2vh;
+  top: 1em;
   width: 100%;
   text-align: center;
-  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
