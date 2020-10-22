@@ -3,8 +3,10 @@
     margin-top: 1em;
     background-color: black;
     width: 100%;
+    z-index: 100;
     /*height: 3em;*/ /*Remove this for scale when other posts can be added.*/
 }
+
 
 .createCommentPost form input{
     padding: 0px;

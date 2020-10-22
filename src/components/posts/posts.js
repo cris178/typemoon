@@ -11,10 +11,13 @@ function Posts (props){
     const [commentsVisibility, setCommentsVisibility] = useState(false);
     const [body, setBody] = useState("");
     const [comments, setcomments] = useState([]);
+    const [zindex,setZindex] = useState(0);
+    const delay = ms => new Promise(res => setTimeout(res, ms));
 
     useEffect(()=>{
         setBody(props.body);
         setOptionsClicked(false);
+        
     },[props.body]);
 
     useEffect(()=>{
@@ -28,10 +31,12 @@ function Posts (props){
     function displayComments(){
         return comments.items.map((comment,index)=>{
             //console.log("Inside: "+body+ " looking at comment " + Object.keys(comment));
-            return(<Comment key={index} content={comment.content}  userName={comment.commentOwnerUsername}  createdAt={comment.createdAt} />)
+            return(<Comment key={index} zindex={zindex - index} content={comment.content}  userName={comment.commentOwnerUsername}  createdAt={comment.createdAt} />)  
             //return(console.log())
         })
     }
+
+    
 
     function showComments(){
         console.log(commentsVisibility);
@@ -50,7 +55,7 @@ function Posts (props){
     }
 
     return(
-        <div className="Posts">
+        <div className="Posts fadeIn">
             <div className="metaData">
                 <div className="PostsUser">{props.userName}</div>  
                 <time>{" "} {new Date(props.date).toDateString()}</time>
