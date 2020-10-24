@@ -16,7 +16,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 //Import mutations and queriries 
 import {listPosts} from './graphql/queries';
 import { ConfirmSignUp } from 'aws-amplify-react';
-import { onCreateComment, onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
+import { onCreateComment, onCreateLike, onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
 
 
 
@@ -96,12 +96,28 @@ function App() {
           }
         });
 
+
+        const CreatePostLikeListener = API.graphql(graphqlOperation(onCreateLike))
+        .subscribe({
+          next: postData =>{
+            const createdLike = postData.value.data.onCreateLike;
+            let postsTemp = [...posts];
+            for(let post of postsTemp){
+              if(createdLike.post.id === post.id){
+                post.likes.items.push(createdLike);
+              }
+            }
+            setPosts(postsTemp);
+          }
+        });
+
     //We need to unsubscribe to avoid memory leaks
     return() =>{
       createPostListener.unsubscribe();
       deletePostListener.unsubscribe();
       updatePostListener.unsubscribe();
       createPostCommentListener.unsubscribe();
+      CreatePostLikeListener.unsubscribe();
     };
   });
 
@@ -156,7 +172,7 @@ function App() {
                 <div className="timelinePosts">
                 {posts.map((post,index)=>{
                   //return(<Posts key={index} postText={post}/>);
-                  return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id} comments={post.comments} handleModal={showEditModal}/>);
+                  return(<Posts key={index} title={post.postTitle} body={post.postBody} userName = {post.postOwnerUsername} date={post.createdAt} postID={post.id} comments={post.comments} likes={post.likes} handleModal={showEditModal}/>);
                 })}
                   
                 </div>      

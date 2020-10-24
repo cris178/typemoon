@@ -117,5 +117,12 @@ EditPost Subscription:  In order to edit a post the subscription needed to fire 
 
 
 
+# Cool Packages
 
+React Icons
 
+https://www.npmjs.com/package/react-icons
+
+https://react-icons.github.io/react-icons/icons?name=fa
+
+The second links shows the name of each icon from the pack.

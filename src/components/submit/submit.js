@@ -13,6 +13,7 @@ function Submit (props){
     },[]);//second parameter is the dependency array, retriggers used effect when change in state?
 
     async function getUser(){
+        console.log("GETTING USER");
         await Auth.currentUserInfo().then(userGet =>{
         const newUser = {
           postOwnerId:userGet.attributes.sub,
