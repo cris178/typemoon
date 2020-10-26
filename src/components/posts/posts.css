@@ -79,6 +79,12 @@
     
 }
 
+.likeNumb{
+    display: inline;
+    position: relative;
+    top: -0.14em;
+}
+
 /*
 .commentsButton:hover{
     background-color: lightcoral;

@@ -13,8 +13,11 @@ function DropDown (props){
   useEffect(()=>{
     //getUser();
     setView(props.style);
+    
     //clean up function runs before component destroyed
   },[props.style]); //Dependency makes so that the useEffect runs every time the prop changes
+
+  
 
   //Handle the Option Selected!
   async function handleOption (selection){
@@ -22,8 +25,11 @@ function DropDown (props){
       handleDeletePost(props.postID);
     }else if(selection === "Edit"){
       handleEditPost(props.postID);
+    }else if(selection === "Share"){
+      console.log("Sharing coming soon!");
     }
   }
+
   //Delete the post
   async function handleDeletePost(postID){
     console.log("Deleting: " + postID);
@@ -43,11 +49,14 @@ function DropDown (props){
   if(props.style !== view){
     setView(props.style);
   }*/
+
+  
+  
   return(
     
     <div className="dropdown" style= {view}>
       <ul>
-        {options.map((option,index)=>{
+        {props.options.map((option,index)=>{
           return(<li key={index} onClick={()=>{ handleOption(option)}} ><a>{option}</a></li>)
         })}
       </ul>

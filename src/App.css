@@ -1,12 +1,23 @@
-html{
+html body{
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  height: max-content;
+  clear: both;
 }
 
-body{
+
+.App{
   background-color: black;
+  height: max-content;
 }
+#root{
+  background-color: red;
+
+}
+
+
+
 
 
 
@@ -124,6 +135,7 @@ nav{
   background-color: #18181b;
   padding-top: 1rem!important;
   padding-bottom: 1rem!important;
+  
 
   border-left-color: #2D2B33;
   border-left-style: solid;

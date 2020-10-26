@@ -1,6 +1,4 @@
-import React,{useEffect, useState, useContext} from 'react';
-import {Context} from '../../context';
-import Auth from 'aws-amplify';
+import React,{useEffect, useState} from 'react';
 import './comments.css'
 import { propStyle } from 'aws-amplify-react';
 
@@ -9,7 +7,7 @@ function Comments(props) {
     const [style,setStyle] = useState();
     useEffect(()=>{
         setStyle({zIndex:props.zindex})
-    },[]);
+    },[props.zindex]);
   
    
 

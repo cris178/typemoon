@@ -1,4 +1,4 @@
-import React,{useEffect, useState, createContext} from 'react';
+import React,{useEffect, useState} from 'react';
 import './App.css';
 import Submit from './components/submit/submit';
 import Posts from './components/posts/posts';
@@ -15,7 +15,7 @@ import Amplify, { API, graphqlOperation } from 'aws-amplify';
 
 //Import mutations and queriries 
 import {listPosts} from './graphql/queries';
-import { ConfirmSignUp } from 'aws-amplify-react';
+//import { ConfirmSignUp } from 'aws-amplify-react';
 import { onCreateComment, onCreateLike, onCreatePost, onDeletePost, onUpdatePost } from './graphql/subscriptions';
 
 
@@ -179,8 +179,6 @@ function App() {
             </div>
       </div>
      </Context.Provider>
-
-
 
     </div>
   );

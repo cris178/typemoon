@@ -26,7 +26,7 @@ function Posts (props){
     const [liked, setLiked] = useState({color:"white"});
     const [likeLength, setLikeLength] = useState(0);
     const [zindex,setZindex] = useState(0);
-    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const  [options, setOptions] = useState([]);
 
     useEffect(()=>{
         setBody(props.body);
@@ -43,6 +43,13 @@ function Posts (props){
 
     function setClick(){
         setOptionsClicked(!optionsClicked);
+        if(user.postOwnerUsername === props.userName){
+            setOptions(["Delete", "Edit", "Share"]);
+            console.log("Full authorization to user");
+        }else{
+            setOptions(["Share"]);
+            console.log("Limited options");
+        }
     }
     function displayComments(){
         return comments.items.map((comment,index)=>{
@@ -122,9 +129,9 @@ function Posts (props){
             <div className="postActions">
                 <div className="reply" onClick={showComments}><GoReply /></div>
                 <div className="commentsButton" onClick={showComments}> <GoComment /> </div>
-                <div className="likes" style={liked} onClick={handleLike}><GoHeart /> {likeLength}</div>
+                <div className="likes" style={liked} onClick={handleLike}><GoHeart /> <div className="likeNumb">{likeLength}</div></div>
                 <div onClick={setClick}className="dropdownIcon"><GoKebabHorizontal /></div>
-                <DropDown style={optionStyle}  postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body);}}></DropDown>
+                <DropDown style={optionStyle} options={options} userName ={props.userName} postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body);}}></DropDown>
             </div>
 
             {
