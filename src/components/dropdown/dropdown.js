@@ -7,7 +7,7 @@ import {Context} from '../../context';
 
 function DropDown (props){
   const {user,setUser} = useContext(Context);
-  const  [options, setOptions] = useState(["Delete","Edit","Share"]);
+  //const  [options, setOptions] = useState(["Delete","Edit","Share"]);
   const [view, setView] = useState({visibility: 'hidden'});
   //const  [user, setUser] = useState();
   useEffect(()=>{

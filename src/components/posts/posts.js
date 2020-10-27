@@ -3,6 +3,7 @@ import './posts.css';
 import DropDown from '../dropdown/dropdown';
 import Comments from '../comments/comments';
 import CreateCommentPost from '../comments/createCommentPost';
+import LikedBy from '../likedBy/likedBy';
 import Comment from '../comments/comments';
 import { createComment, createLike } from '../../graphql/mutations';
 import {Context} from '../../context';
@@ -25,8 +26,11 @@ function Posts (props){
     const [likes, setLikes] = useState([]);
     const [liked, setLiked] = useState({color:"white"});
     const [likeLength, setLikeLength] = useState(0);
+    const [likedBy, setLikedBy] = useState([]);
+    const [showLikes, setShowLikes] = useState(false);
     const [zindex,setZindex] = useState(0);
     const  [options, setOptions] = useState([]);
+    
 
     useEffect(()=>{
         setBody(props.body);
@@ -38,6 +42,7 @@ function Posts (props){
         setcomments(props.comments);
         setLikes(props.likes);
         setLikeLength(props.likes.items.length);
+        //console.log(props.likes.items.likeOwnerUsername);
         console.log("Running comments update useeffect: " + props.comments.items.length);
     },[props.comments,props.likes]);
 
@@ -96,10 +101,29 @@ function Posts (props){
 
     }
 
+    async function handleHover(){
+        let likedbyUser = [];
+        for(let post of props.likes.items){
+            console.log(post.likeOwnerUsername);
+            likedbyUser.push(post.likeOwnerUsername);
+        }
+        setLikedBy(likedbyUser);
+        setShowLikes(!showLikes);
+        
+    }
+
     function showComments(){
         console.log(commentsVisibility);
         setCommentsVisibility(!commentsVisibility);
     }
+
+    async function handleLeave(){
+        setLikedBy([]);
+        setShowLikes(!showLikes);
+    }
+
+
+
 
     let optionStyle;
     if(optionsClicked){
@@ -129,7 +153,10 @@ function Posts (props){
             <div className="postActions">
                 <div className="reply" onClick={showComments}><GoReply /></div>
                 <div className="commentsButton" onClick={showComments}> <GoComment /> </div>
-                <div className="likes" style={liked} onClick={handleLike}><GoHeart /> <div className="likeNumb">{likeLength}</div></div>
+                <div className="likes" style={liked} onClick={handleLike} onMouseEnter={handleHover} onMouseLeave={handleLeave}><GoHeart /> <div className="likeNumb">{likeLength}</div></div>
+                {
+                    showLikes &&(<LikedBy liked={likedBy}/>)
+                }
                 <div onClick={setClick}className="dropdownIcon"><GoKebabHorizontal /></div>
                 <DropDown style={optionStyle} options={options} userName ={props.userName} postID={props.postID} clicked={optionsClicked} handle={(val)=>{setOptionsClicked(false); props.handleModal(val,props.body);}}></DropDown>
             </div>
