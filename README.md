@@ -1,4 +1,9 @@
 # TypeMoon
+
+![TypeMoon Mobile View](https://i.imgur.com/neo2XM9.png)
+
+TypeMoon.app
+
 A Simple Twitter clone built using an AWS cloud stack including services such as Appsync, GraphQL, Amazon Dynamo DB, 
 
 
